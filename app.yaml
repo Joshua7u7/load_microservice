@@ -1,3 +1,27 @@
-env: FILES_PATH 
-env: PORT 
-runtime: nodejs
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: load_ms
+spec:
+    selector:
+        matchLabels:
+            app: load_ms
+            role: master
+            tier: backend
+    replicas: 3
+    template:
+        metadata:
+            labels:
+                app: load_ms
+                role: master
+                tier: backend
+        spec:
+            containers:
+                - name: master
+                image: docker.io/josue123/load_microservice:tagname
+                resources:
+                    requests:
+                        cpu: 110m
+                        memory: 100Mi
+                ports:
+                    -containerPort: 3000
