@@ -17,11 +17,11 @@ spec:
                 tier: backend
         spec:
             containers:
-                name: master
+            -   name: master
                 image: docker.io/josue123/load_microservice:tagname
                 resources:
                     requests:
                         cpu: 110m
                         memory: 100Mi
                 ports:
-                    containerPort: 3000
+                -   containerPort: 3000
